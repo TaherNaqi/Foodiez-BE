@@ -1,0 +1,24 @@
+{
+  "name": "foodiez-be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TaherNaqi/Foodiez-BE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TaherNaqi/Foodiez-BE/issues"
+  },
+  "homepage": "https://github.com/TaherNaqi/Foodiez-BE#readme",
+  "dependencies": {
+    "mongoose": "^6.2.0"
+  }
+}
