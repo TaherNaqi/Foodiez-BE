@@ -5,11 +5,15 @@ const connectDb = require("./database");
 const recipeRoutes = require("./api/recipes/routes");
 const ingredientRoutes = require("./api/ingredients/routes");
 const userRoutes = require("./api/users/routes");
+const catagoriesroutes = require("./api/Catagories/routes");
 const { localStrategy, jwtStrategy } = require("./middleware/passport");
 const app = express();
 connectDb();
 
 app.use(cors());
+
+// const Catagory = require("./models/Catagory");
+
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -25,6 +29,7 @@ passport.use(localStrategy);
 app.use("/api", userRoutes);
 app.use("/api/recipes", recipeRoutes);
 app.use("/api/ingredients", ingredientRoutes);
+app.use("/api/Catagories", catagoriesroutes);
 app.use((err, req, res, next) => {
   res.status(err.status || 500).json({
     message: err.message || "Internal Server Error",
