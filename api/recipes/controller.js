@@ -1,9 +1,9 @@
 const Recipe = require("../../models/Recipe");
-
+const Ingredient = require("../../models/Ingredient");
 exports.fetchRecipe = async (recipeId, next) => {
   try {
-    const shop = await Recipe.findById(recipeId);
-    return shop;
+    const recipe = await Recipe.findById(recipeId);
+    return recipe;
   } catch (error) {
     next(error);
   }
@@ -44,6 +44,20 @@ exports.recipeUpdate = async (req, res, next) => {
       );
       res.status(201).json(recipe);
     }
+  } catch (error) {
+    next(error);
+  }
+};
+exports.ingredientCreate = async (req, res, next) => {
+  try {
+    const recipeId = req.params.recipeId;
+    req.body = { ...req.body, recipe: recipeId };
+    const newIngredient = await Ingredient.create(req.body);
+    await Recipe.findOneAndUpdate(
+      { _id: req.params.recipeId },
+      { $push: { ingredients: newIngredient._id } }
+    );
+    return res.status(201).json(newIngredient);
   } catch (error) {
     next(error);
   }

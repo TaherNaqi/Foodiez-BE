@@ -7,6 +7,7 @@ const {
   recipeCreate,
   getRecipes,
   recipeUpdate,
+  ingredientCreate,
 } = require("./controller");
 router.param("recipeId", async (req, res, next, recipeId) => {
   const foundRecipe = await fetchRecipe(recipeId, next);
@@ -27,4 +28,6 @@ router.put(
   upload.single("image"),
   recipeUpdate
 );
+router.post("/:recipeId/ingredient", ingredientCreate);
+
 module.exports = router;

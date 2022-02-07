@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const IngredientSchema = new mongoose.Schema(
   {
-    name: String,
+    name: { type: String, unique: true },
   },
   { timestamps: true }
 );

@@ -5,7 +5,7 @@ const ShopSchema = new mongoose.Schema(
   {
     name: String,
     image: String,
-    ingredients: [],
+    ingredients: [{ type: mongoose.Schema.Types.ObjectId, ref: "Ingredient" }],
     owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   },
   { timestamps: true }
