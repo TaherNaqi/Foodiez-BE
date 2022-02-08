@@ -1,23 +1,29 @@
-const Catagory = require("../../models/Catagory");
+const Category = require("../../models/Category");
 
 exports.getCatagories = async (req, res) => {
   try {
-    const catagories = await Catagory.find();
+    const catagories = await Category.find();
     return res.json(catagories);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
 };
-
-exports.CatagoryCreate = async (req, res) => {
+exports.createCategory = async (req, res, next) => {
   try {
-    const newCatagory = await Catagory.create(req.body);
-    return res.status(201).json(newCatagory);
+    const newCategory = await Category.create(req.body);
+    return res.status(201).json(newCategory);
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    next(error);
   }
 };
-
+// exports.getRecipes = async (req, res, next) => {
+//   try {
+//     const recipes = await Recipe.find();
+//     return res.json(recipes);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
 // exports.recipeCreate = async (req, res) => {
 //   try {
 //     const CatagoryId = req.params.catagoryId;

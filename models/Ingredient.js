@@ -1,4 +1,3 @@
-const mongooseSlugPlugin = require("mongoose-slug-plugin");
 const mongoose = require("mongoose");
 
 const IngredientSchema = new mongoose.Schema(
@@ -7,6 +6,4 @@ const IngredientSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
-IngredientSchema.plugin(mongooseSlugPlugin, { tmpl: "<%=name%>" });
 module.exports = mongoose.model("Ingredient", IngredientSchema);

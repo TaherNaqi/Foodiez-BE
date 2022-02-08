@@ -29,7 +29,7 @@ passport.use(localStrategy);
 app.use("/api", userRoutes);
 app.use("/api/recipes", recipeRoutes);
 app.use("/api/ingredients", ingredientRoutes);
-app.use("/api/Catagories", catagoriesroutes);
+app.use("/api/categories", catagoriesroutes);
 app.use((err, req, res, next) => {
   res.status(err.status || 500).json({
     message: err.message || "Internal Server Error",
