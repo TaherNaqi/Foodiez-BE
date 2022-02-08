@@ -23,9 +23,8 @@ exports.recipeCreate = async (req, res, next) => {
   try {
     if (req.file)
       req.body.image = `${req.protocol}://${req.get("host")}/${req.file.path}`;
-    req.body.owner = req.user.id;
+    req.body.owner = { id: req.user._id, username: req.user.username };
     const newRecipe = await Recipe.create(req.body);
-    console.log(req.body.ingredients[0]);
     req.body.ingredients.map(
       async (ingredient) =>
         await Ingredient.findOneAndUpdate(

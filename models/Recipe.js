@@ -7,7 +7,7 @@ const RecipeSchema = new mongoose.Schema(
     image: String,
     ingredients: [{ type: mongoose.Schema.Types.ObjectId, ref: "Ingredient" }],
     categories: [{ type: mongoose.Schema.Types.ObjectId, ref: "Category" }],
-    owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    owner: { type: mongoose.Schema.Types.Object, ref: "User" },
   },
   { timestamps: true }
 );
