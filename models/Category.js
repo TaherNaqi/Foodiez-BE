@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const CategorySchema = new mongoose.Schema(
   {
-    name: { type: String, required: true },
+    name: { type: String, required: true, unique: true },
     image: { type: String },
     recipes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Recipe" }],
   },
