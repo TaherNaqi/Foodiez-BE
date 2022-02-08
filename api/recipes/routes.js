@@ -19,6 +19,7 @@ router.get("/", getRecipes);
 router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
+  upload.single("image"),
   recipeCreate
 );
 router.put(
