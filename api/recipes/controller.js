@@ -12,7 +12,7 @@ exports.fetchRecipe = async (recipeId, next) => {
 };
 exports.getRecipes = async (req, res, next) => {
   try {
-    const recipes = await Recipe.find();
+    const recipes = await Recipe.find().populate("ingredients categories");
     return res.json(recipes);
   } catch (error) {
     next(error);
