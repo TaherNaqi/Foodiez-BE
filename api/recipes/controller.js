@@ -1,6 +1,7 @@
 const Recipe = require("../../models/Recipe");
 const Ingredient = require("../../models/Ingredient");
 const Category = require("../../models/Category");
+const { get } = require("express/lib/response");
 
 exports.fetchRecipe = async (recipeId, next) => {
   try {
@@ -67,6 +68,7 @@ exports.recipeUpdate = async (req, res, next) => {
     next(error);
   }
 };
+
 // exports.ingredientCreate = async (req, res, next) => {
 //   try {
 //     const recipeId = req.params.recipeId;
